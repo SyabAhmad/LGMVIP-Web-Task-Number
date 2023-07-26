@@ -1,0 +1,45 @@
+.container {
+  background-color: #ffb74d;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #ef6c00;
+}
+.addingTasks {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.addingTasks input {
+  padding: 8px;
+  padding-inline-start: 20px;
+  border: 1px solid #ef6c00;
+  border-radius: 20px;
+  color: #ef6c00;
+}
+
+.addingTasks button {
+  padding: 8px;
+  border: 1px solid #ef6c00;
+  border-radius: 20px;
+  color: white;
+  font-size: 25px;
+  background-color: #ef6c00;
+}
+.display {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.display .box {
+  background-color: #ef6c00;
+  color: white;
+  padding: 10px;
+}
+.box ul li {
+  list-style: none;
+}
