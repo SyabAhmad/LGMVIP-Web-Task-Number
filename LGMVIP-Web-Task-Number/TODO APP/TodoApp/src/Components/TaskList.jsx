@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../Style/TaskList.css";
-
+import { Trash2 } from "lucide-react";
 const TaskList = () => {
   const [taskQuery, setTaskQuery] = useState("");
   const [listOfTask, setListOfTasks] = useState([]);
@@ -20,6 +20,10 @@ const TaskList = () => {
     } else {
       console.log("Entry Required");
     }
+  };
+
+  const handleTrashCan = (taskId) => {
+    setListOfTasks((prev) => prev.filter((task) => task.id !== taskId));
   };
   return (
     <>
@@ -42,16 +46,26 @@ const TaskList = () => {
       </div>
 
       <div className="display">
-        <div className="box">
-          <ul>
-            {listOfTask.map((task) => (
-              <li key={task.id} id={task.id}>
-                {task.id}
+        {listOfTask.map((task) => (
+          <div className="box">
+            <ul>
+              <li key={task.key} id={task.id}>
+                {task.id} {")"}
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    console.log("asdasd");
+                  }}
+                />
                 {task.value}
+                <Trash2
+                  color="#ffffff"
+                  onClick={() => handleTrashCan(task.id)}
+                />
               </li>
-            ))}
-          </ul>
-        </div>
+            </ul>
+          </div>
+        ))}
       </div>
     </>
   );

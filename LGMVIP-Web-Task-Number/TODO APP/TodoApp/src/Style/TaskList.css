@@ -33,13 +33,22 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .display .box {
   background-color: #ef6c00;
   color: white;
   padding: 10px;
+  display: flex;
+  border-radius: 20px;
 }
 .box ul li {
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
