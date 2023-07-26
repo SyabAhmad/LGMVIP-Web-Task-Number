@@ -36,6 +36,7 @@ const TaskList = () => {
             <input
               type="text"
               id="input"
+              required
               placeholder="Enter ToDo Here"
               value={taskQuery}
               onChange={handleOnchangeInput}
@@ -51,13 +52,8 @@ const TaskList = () => {
             <ul>
               <li key={task.key} id={task.id}>
                 {task.id} {")"}
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    console.log("asdasd");
-                  }}
-                />
-                {task.value}
+                <input type="checkbox" />
+                <span>{task.value}</span>
                 <Trash2
                   color="#ffffff"
                   onClick={() => handleTrashCan(task.id)}
