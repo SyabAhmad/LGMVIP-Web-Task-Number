@@ -63,6 +63,7 @@
 }
 hr {
   border: 1.5px dashed #ef6c00;
+  width: 90px;
 }
 /* input[type="checkbox"]:checked + .spans span {
   text-decoration: line-through;

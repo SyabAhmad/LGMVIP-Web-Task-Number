@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "../Style/TaskList.css";
 import { Trash2 } from "lucide-react";
 const TaskList = () => {
@@ -6,7 +7,7 @@ const TaskList = () => {
   const [taskDescriptionQuery, setTaskDescriptionQuery] = useState("");
   const [listOfTask, setListOfTasks] = useState([]);
   const [message, setMessage] = useState("");
-  const id = 0;
+  const [id, setId] = useState(1);
 
   const handleTitleOnchangeInput = (e) => {
     setMessage("");
@@ -18,6 +19,40 @@ const TaskList = () => {
     setMessage("");
   };
 
+  const isLocalStorageSupported = () => {
+    try {
+      const testKey = "__test__";
+      localStorage.setItem(testKey, testKey);
+      localStorage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
+  // Usage example:
+
+  // Fetch data from local storage on component mount
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("dataKey"));
+    if (isLocalStorageSupported()) {
+      if (savedTasks && savedTasks.length) {
+        const maxId = Math.max(...savedTasks.map((task) => task.id));
+        setId(maxId + 1);
+        setListOfTasks(savedTasks);
+        console.log("Data retrieved from local storage:", savedTasks);
+      }
+    } else {
+      setMessage("Local Storage not supported");
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save the tasks to local storage whenever the listOfTask state changes
+    localStorage.setItem("dataKey", JSON.stringify(listOfTask));
+    console.log("Data saved to local storage:", listOfTask);
+  }, [listOfTask]);
+
   const handleOnClick = (e) => {
     if (taskTitleQuery !== "" && taskDescriptionQuery !== "") {
       setMessage("");
@@ -26,11 +61,13 @@ const TaskList = () => {
       setListOfTasks((prev) => [
         ...prev,
         {
-          id: (prev += 1),
+          id: id,
           title: taskTitleQuery,
           value: taskDescriptionQuery,
         },
       ]);
+      setId((prevId) => prevId + 1);
+
       setTitleTaskQuery("");
       setTaskDescriptionQuery("");
     } else {
@@ -76,14 +113,21 @@ const TaskList = () => {
 
       <div className="display">
         {listOfTask.map((task) => (
-          <div className="box">
+          <div className="box" key={task.id}>
             <li id={task.id}>
               <div>{/* <input type="checkbox" /> */}</div>
               <div className="spans">
-                <span className="titleArea">{task.title}</span>
-                <hr />
+                <span className="titleArea">
+                  {" "}
+                  {"Title:  "} {task.title}
+                  <hr />
+                </span>
+
                 <br />
-                <span className="descriptionArea">{task.value}</span>
+                <span className="descriptionArea">
+                  {"Description:"} <br />
+                  {task.value}
+                </span>
               </div>
               <div>
                 <Trash2

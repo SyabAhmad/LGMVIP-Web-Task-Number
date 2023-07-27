@@ -1,7 +1,7 @@
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import TaskList from "./Components/TaskList";
-import { BrowserRouter } from "react-router-dom";
+import Footer from "./Components/Footer";
 function App() {
   return (
     <>
@@ -14,6 +14,9 @@ function App() {
         <main>
           <TaskList />
         </main>
+      </div>
+      <div>
+        <Footer />
       </div>
     </>
   );
