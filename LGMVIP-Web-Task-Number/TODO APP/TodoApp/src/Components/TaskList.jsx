@@ -40,7 +40,7 @@ const TaskList = () => {
         const maxId = Math.max(...savedTasks.map((task) => task.id));
         setId(maxId + 1);
         setListOfTasks(savedTasks);
-        console.log("Data retrieved from local storage:", savedTasks);
+        // console.log("Data retrieved from local storage:", savedTasks);
       }
     } else {
       setMessage("Local Storage not supported");
@@ -50,14 +50,14 @@ const TaskList = () => {
   useEffect(() => {
     // Save the tasks to local storage whenever the listOfTask state changes
     localStorage.setItem("dataKey", JSON.stringify(listOfTask));
-    console.log("Data saved to local storage:", listOfTask);
+    // console.log("Data saved to local storage:", listOfTask);
   }, [listOfTask]);
 
   const handleOnClick = (e) => {
     if (taskTitleQuery !== "" && taskDescriptionQuery !== "") {
       setMessage("");
-      console.log(taskTitleQuery);
-      console.log(taskDescriptionQuery);
+      // console.log(taskTitleQuery);
+      // console.log(taskDescriptionQuery);
       setListOfTasks((prev) => [
         ...prev,
         {
