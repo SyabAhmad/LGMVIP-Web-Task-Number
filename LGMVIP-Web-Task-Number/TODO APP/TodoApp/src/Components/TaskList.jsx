@@ -5,17 +5,22 @@ const TaskList = () => {
   const [taskTitleQuery, setTitleTaskQuery] = useState("");
   const [taskDescriptionQuery, setTaskDescriptionQuery] = useState("");
   const [listOfTask, setListOfTasks] = useState([]);
+  const [message, setMessage] = useState("");
   const id = 0;
+
   const handleTitleOnchangeInput = (e) => {
+    setMessage("");
     setTitleTaskQuery(e.target.value);
   };
 
   const handleDescriptionOnchangeInput = (e) => {
     setTaskDescriptionQuery(e.target.value);
+    setMessage("");
   };
 
   const handleOnClick = (e) => {
-    if (taskTitleQuery != null) {
+    if (taskTitleQuery !== "" && taskDescriptionQuery !== "") {
+      setMessage("");
       console.log(taskTitleQuery);
       console.log(taskDescriptionQuery);
       setListOfTasks((prev) => [
@@ -29,7 +34,7 @@ const TaskList = () => {
       setTitleTaskQuery("");
       setTaskDescriptionQuery("");
     } else {
-      console.log("Entry Required");
+      setMessage("All Field are Required");
     }
   };
 
@@ -63,6 +68,7 @@ const TaskList = () => {
               value={taskDescriptionQuery}
               onChange={handleDescriptionOnchangeInput}
             />
+            <span className="errorMessage">{message}</span>
           </div>
           <button onClick={handleOnClick}>Add</button>
         </div>
