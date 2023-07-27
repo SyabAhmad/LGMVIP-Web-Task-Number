@@ -1,11 +1,13 @@
 nav {
-  background-color: #ef6c00;
+  background-color: white;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: #ef6c00;
+  border-radius: 0px 0px 10px 10px;
 }
+
 nav ul {
   display: flex;
   list-style: none;
@@ -13,10 +15,23 @@ nav ul {
 }
 a {
   text-decoration: none;
-  color: white;
+  color: #ef6c00;
   transition: 0.2s ease-out;
 }
 nav ul li a:hover {
   text-decoration: underline;
   text-decoration-color: #fff3e0;
+}
+@media screen and (max-width: 460px) {
+  nav ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }

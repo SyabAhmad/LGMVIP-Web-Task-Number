@@ -2,21 +2,32 @@ import React, { useState } from "react";
 import "../Style/TaskList.css";
 import { Trash2 } from "lucide-react";
 const TaskList = () => {
-  const [taskQuery, setTaskQuery] = useState("");
+  const [taskTitleQuery, setTitleTaskQuery] = useState("");
+  const [taskDescriptionQuery, setTaskDescriptionQuery] = useState("");
   const [listOfTask, setListOfTasks] = useState([]);
   const id = 0;
-  const handleOnchangeInput = (e) => {
-    setTaskQuery(e.target.value);
+  const handleTitleOnchangeInput = (e) => {
+    setTitleTaskQuery(e.target.value);
+  };
+
+  const handleDescriptionOnchangeInput = (e) => {
+    setTaskDescriptionQuery(e.target.value);
   };
 
   const handleOnClick = (e) => {
-    if (taskQuery != null) {
-      console.log(taskQuery);
+    if (taskTitleQuery != null) {
+      console.log(taskTitleQuery);
+      console.log(taskDescriptionQuery);
       setListOfTasks((prev) => [
         ...prev,
-        { id: prev.length + 1, value: taskQuery },
+        {
+          id: (prev += 1),
+          title: taskTitleQuery,
+          value: taskDescriptionQuery,
+        },
       ]);
-      setTaskQuery("");
+      setTitleTaskQuery("");
+      setTaskDescriptionQuery("");
     } else {
       console.log("Entry Required");
     }
@@ -30,16 +41,27 @@ const TaskList = () => {
       <div className="container">
         <div className="addingTasks">
           <h2>Todo App</h2>
-          <div>
-            <label htmlFor="input">Task Here</label>
+          <div className="inputs">
+            <label htmlFor="input">Title</label>
             <br />
             <input
               type="text"
               id="input"
               required
               placeholder="Enter ToDo Here"
-              value={taskQuery}
-              onChange={handleOnchangeInput}
+              value={taskTitleQuery}
+              onChange={handleTitleOnchangeInput}
+            />
+            <br />
+            <label htmlFor="input">Description</label>
+            <br />
+            <input
+              type="text"
+              id="input"
+              required
+              placeholder="Enter ToDo Here"
+              value={taskDescriptionQuery}
+              onChange={handleDescriptionOnchangeInput}
             />
           </div>
           <button onClick={handleOnClick}>Add</button>
@@ -49,17 +71,21 @@ const TaskList = () => {
       <div className="display">
         {listOfTask.map((task) => (
           <div className="box">
-            <ul>
-              <li key={task.key} id={task.id}>
-                {task.id} {")"}
-                <input type="checkbox" />
-                <span>{task.value}</span>
+            <li id={task.id}>
+              <div>{/* <input type="checkbox" /> */}</div>
+              <div className="spans">
+                <span className="titleArea">{task.title}</span>
+                <hr />
+                <br />
+                <span className="descriptionArea">{task.value}</span>
+              </div>
+              <div>
                 <Trash2
-                  color="#ffffff"
+                  color="#ef6c00"
                   onClick={() => handleTrashCan(task.id)}
                 />
-              </li>
-            </ul>
+              </div>
+            </li>
           </div>
         ))}
       </div>
