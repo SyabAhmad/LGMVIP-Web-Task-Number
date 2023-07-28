@@ -1,0 +1,15 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+footer h2 {
+  color: rgb(19, 105, 190);
+}
+footer div {
+  display: flex;
+  gap: 20px;
+}
