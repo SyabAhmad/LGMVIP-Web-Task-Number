@@ -1,6 +1,6 @@
 .main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin-top: 50px;
@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: aliceblue;
+  padding: 20px;
 }
 
 .genderSelection {
@@ -38,9 +40,54 @@ button:hover {
   border: 1px solid aliceblue;
 }
 
-@media screen and (max-width: 765px) {
+.display {
+  background-color: aliceblue;
+  padding: 20px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.card li {
+  padding: 20px;
+  border: 1px solid rgb(95, 172, 240);
+  display: flex;
+  gap: 100px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: row;
+}
+
+hr {
+  border: 1px solid rgb(95, 172, 240);
+  width: 200px;
+}
+#hr1 {
+  border: 1px solid rgb(95, 172, 240);
+  height: 200px;
+  width: 0px;
+}
+img {
+  width: 300px;
+}
+.card li {
+  list-style: none;
+}
+
+@media screen and (max-width: 768px) {
   .main {
     flex-direction: column;
     gap: 50px;
+  }
+  hr {
+    border: 1px solid rgb(95, 172, 240);
+    height: 0px;
+  }
+  .card li {
+    flex-direction: column;
+  }
+  #hr1 {
+    height: 0px;
+    width: 200px;
   }
 }
