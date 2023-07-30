@@ -1,7 +1,11 @@
+import Calculator from "./Components/Calculator";
+
 function App() {
   return (
     <>
-      <h2 className="text-white">sadasdasasp</h2>
+      <div>
+        <Calculator />
+      </div>
     </>
   );
 }
