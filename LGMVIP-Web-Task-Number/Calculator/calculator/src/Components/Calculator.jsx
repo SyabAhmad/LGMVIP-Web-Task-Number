@@ -31,7 +31,7 @@ const Calculator = () => {
             <button onClick={() => handleButtonClick("1")}>1</button>
             <button onClick={() => handleButtonClick("2")}>2</button>
             <button onClick={() => handleButtonClick("3")}>3</button>
-            <button onClick={() => handleButtonClick("+")}>+</button>
+            <button onClick={clearAll}>AC</button>
           </div>
           <div className="buttons">
             <button onClick={() => handleButtonClick("4")}>4</button>
@@ -43,17 +43,24 @@ const Calculator = () => {
             <button onClick={() => handleButtonClick("7")}>7</button>
             <button onClick={() => handleButtonClick("8")}>8</button>
             <button onClick={() => handleButtonClick("9")}>9</button>
-            <button onClick={() => handleButtonClick("*")}>*</button>
+
+            <button onClick={() => handleButtonClick("+")}>+</button>
           </div>
           <div className="buttons">
-            <button onClick={() => handleButtonClick("0")}>0</button>
             <button onClick={() => handleButtonClick("00")}>00</button>
+            <button onClick={() => handleButtonClick("0")}>0</button>
+            <button onClick={() => handleButtonClick("*")}>*</button>
+
             <button onClick={() => handleButtonClick("%")}>%</button>
+          </div>
+          <div className="buttons">
+            <button onClick={() => handleButtonClick("000")}>000</button>
+            <button onClick={() => handleButtonClick(".")}>.</button>
             <button onClick={() => handleButtonClick("/")}>/</button>
+            <button onClick={() => handleButtonClick("^")}>^</button>
           </div>
           <div className="buttons">
             <button onClick={result}>=</button>
-            <button onClick={clearAll}>AC</button>
           </div>
         </div>
       </div>
